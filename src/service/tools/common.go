@@ -59,8 +59,8 @@ func HttpPost(url , data string) (string, error){
 	client := &http.Client{}
 	resp, err := client.Do(postReq)
 
-	defer resp.Body.Close()
 
+	defer resp.Body.Close()
 	if err != nil {
 		//fmt.Println(err)
 		return "", err
@@ -74,6 +74,7 @@ func HttpPost(url , data string) (string, error){
 		//fmt.Println(err)
 		return string(body), nil
 	}
+
 }
 
 func HttpDo() {
@@ -97,5 +98,12 @@ func HttpDo() {
 	}
 
 	fmt.Println(string(body))
+}
+
+func Is_exits_key(src map[string]interface{}, key string) bool  {
+	if _, ok := src[key]; ok {
+		return true
+	}
+	return false
 }
 
